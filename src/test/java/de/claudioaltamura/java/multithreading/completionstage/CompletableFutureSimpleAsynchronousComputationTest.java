@@ -13,7 +13,8 @@ class CompletableFutureSimpleAsynchronousComputationTest {
       new CompletableFutureWithEncapsulatedLogic();
 
   @Test
-  @DisplayName("thenApply returns a value, chaining synchronously, sequentially")
+  @DisplayName(
+      "thenApply works with a result of the previous calls, returns a value, synchronously, chaining sequentially")
   void thenApply() throws InterruptedException, ExecutionException {
     CompletableFuture<String> completableFuture =
         completableFutureWithEncapsulatedLogic.calculateAsync();
