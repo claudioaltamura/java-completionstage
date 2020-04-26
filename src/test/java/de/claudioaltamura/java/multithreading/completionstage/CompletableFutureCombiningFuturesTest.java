@@ -14,8 +14,11 @@ class CompletableFutureCombiningFuturesTest {
 
   @Test
   @DisplayName(
-      "thenCompose returns another object of the same type and chains two Futures asynchronously, sequentially")
+      "thenCompose returns another object of the same type, asynchronously, chaining two Futures sequentially")
   void thenCompose() throws InterruptedException, ExecutionException {
+    // thenCompose() uses the previous stage as the argument. It will flatten and return a Future
+    // with the result directly.
+    // So if the idea is to chain CompletableFuture methods then it’s better to use thenCompose().
     CompletableFuture<String> composedFuture =
         completableFutureWithEncapsulatedLogic
             .calculateAsync()
@@ -25,7 +28,7 @@ class CompletableFutureCombiningFuturesTest {
   }
 
   @Test
-  @DisplayName("thenCombine with two independent Futures Future,Function and process both results")
+  @DisplayName("thenCombine with two independent Futures Future, Function and process both results")
   void thenCombineWith2IndependentFutures() throws InterruptedException, ExecutionException {
     CompletableFuture<String> combinedFuture =
         completableFutureWithEncapsulatedLogic
