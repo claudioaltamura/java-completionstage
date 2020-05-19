@@ -37,7 +37,7 @@ class CompletableFutureParallelTest {
   }
 
   @Test
-  @DisplayName("allOf parallely combines completable futures without returning a result")
+  @DisplayName("of parallely combines completable futures without returning a result")
   void parallelCombineWithResult() throws InterruptedException, ExecutionException {
     CompletableFutureWithEncapsulatedLogic completableFutureWithEncapsulatedLogic =
         new CompletableFutureWithEncapsulatedLogic();
