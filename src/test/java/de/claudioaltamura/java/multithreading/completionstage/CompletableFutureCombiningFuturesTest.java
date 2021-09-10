@@ -28,7 +28,8 @@ class CompletableFutureCombiningFuturesTest {
   }
 
   @Test
-  @DisplayName("thenCombine with two independent Futures, combines functions and process both results")
+  @DisplayName(
+      "thenCombine with two independent Futures, combines functions and process both results")
   void thenCombineWith2IndependentFutures() throws InterruptedException, ExecutionException {
     CompletableFuture<String> combinedFuture =
         completableFutureWithEncapsulatedLogic

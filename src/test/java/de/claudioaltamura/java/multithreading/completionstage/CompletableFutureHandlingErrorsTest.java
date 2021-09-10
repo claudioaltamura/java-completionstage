@@ -18,8 +18,8 @@ class CompletableFutureHandlingErrorsTest {
   void handleExceptionGoodCase() throws InterruptedException, ExecutionException {
     Future<String> completableFuture =
         completableFutureWithEncapsulatedLogic
-            .calculateAsyncWithException("you")
-            .handle((s, t) -> s != null ? s : "Hello");
+            .calculateAsyncWithException(null)
+            .handle((s, t) -> s != null ? s : "hello");
 
     assertThat(completableFuture.get()).isEqualTo("hello");
   }
@@ -37,7 +37,7 @@ class CompletableFutureHandlingErrorsTest {
   @Test
   @DisplayName(
       "manually complete the Future with a value, but also to have the ability to complete it with an exception.")
-  void exceptionally() throws InterruptedException, ExecutionException {
+  void exceptionally() {
     Future<String> completableFuture =
         completableFutureWithEncapsulatedLogic
             .calculateAsyncWithException(null)
@@ -47,11 +47,7 @@ class CompletableFutureHandlingErrorsTest {
                   throw new RuntimeException("calculation failed");
                 });
 
-    Throwable thrown =
-        catchThrowable(
-            () -> {
-              completableFuture.get();
-            });
+    Throwable thrown = catchThrowable(completableFuture::get);
 
     assertThat(thrown)
         .hasRootCauseExactlyInstanceOf(RuntimeException.class)
@@ -82,7 +78,7 @@ class CompletableFutureHandlingErrorsTest {
   }
 
   @Test
-  void whenCompleteBadCase() throws InterruptedException, ExecutionException {
+  void whenCompleteBadCase() {
     Future<String> completableFuture =
         completableFutureWithEncapsulatedLogic
             .calculateAsyncWithException(null)
@@ -100,11 +96,7 @@ class CompletableFutureHandlingErrorsTest {
                   throw new RuntimeException("calculation failed");
                 });
 
-    Throwable thrown =
-        catchThrowable(
-            () -> {
-              completableFuture.get();
-            });
+    Throwable thrown = catchThrowable(completableFuture::get);
 
     assertThat(thrown)
         .hasRootCauseExactlyInstanceOf(RuntimeException.class)

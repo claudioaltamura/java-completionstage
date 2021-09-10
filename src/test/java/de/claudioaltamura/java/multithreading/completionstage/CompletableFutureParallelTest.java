@@ -38,12 +38,12 @@ class CompletableFutureParallelTest {
 
   @Test
   @DisplayName("of parallely combines completable futures without returning a result")
-  void parallelCombineWithResult() throws InterruptedException, ExecutionException {
+  void parallelCombineWithResult() {
     CompletableFutureWithEncapsulatedLogic completableFutureWithEncapsulatedLogic =
         new CompletableFutureWithEncapsulatedLogic();
 
     CompletableFuture<String> completableFuture1 =
-        completableFutureWithEncapsulatedLogic.calculateAsync("Hello");
+        completableFutureWithEncapsulatedLogic.calculateAsync("hello");
     CompletableFuture<String> completableFuture2 =
         completableFutureWithEncapsulatedLogic.calculateAsync("you");
     CompletableFuture<String> completableFuture3 =
