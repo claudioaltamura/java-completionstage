@@ -4,24 +4,25 @@ plugins {
     java
     eclipse
     idea
-    id("com.diffplug.gradle.spotless") version "3.27.1"
-    id("com.github.ben-manes.versions") version "0.27.0"
+    id("com.diffplug.spotless") version "5.15.0"
+    id("com.github.ben-manes.versions") version "0.39.0"
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testImplementation("org.assertj:assertj-core:3.15.0")
+    testImplementation("org.assertj:assertj-core:3.20.2")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_13
-    targetCompatibility = JavaVersion.VERSION_13
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 spotless {
