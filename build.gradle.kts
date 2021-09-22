@@ -4,7 +4,7 @@ plugins {
     java
     eclipse
     idea
-    id("com.diffplug.spotless") version "5.15.0"
+    id("com.diffplug.spotless") version "5.15.1"
     id("com.github.ben-manes.versions") version "0.39.0"
 }
 
@@ -13,11 +13,11 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.assertj:assertj-core:3.20.2")
+    testImplementation("org.assertj:assertj-core:3.21.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.0")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.0")
 }
 
 java {
