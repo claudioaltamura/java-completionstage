@@ -18,4 +18,18 @@ class CompletableFutureWithEncapsulatedLogicTest {
 
     assertThat(completableFuture.get()).isEqualTo("hello, world");
   }
+
+  @Test
+  void completableFutureThenAccept() throws ExecutionException, InterruptedException {
+    CompletableFutureWithEncapsulatedLogic completableFutureWithEncapsulatedLogic =
+        new CompletableFutureWithEncapsulatedLogic();
+
+    Future<String> completableFuture =
+        completableFutureWithEncapsulatedLogic
+            .calculateAsync()
+            .thenApply(s -> "computation returned: " + s);
+    // .thenCompose(s -> CompletableFuture.supplyAsync(() -> "computation returned: " + s));
+
+    assertThat(completableFuture.get()).isEqualTo("computation returned: hello, world");
+  }
 }
